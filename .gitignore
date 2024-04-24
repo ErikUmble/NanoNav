@@ -1,4 +1,4 @@
 .venv/*
-_build/**/
-_static/*
-_templates/*
+*/_build/**/
+*/_static/**/
+*/_templates/**/
