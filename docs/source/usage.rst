@@ -1,13 +1,22 @@
-Usage
-=====
+Quick Start
+===========
 
 Installation
 ------------
 
-To use NanoNav, include the following Python file in your project directory, calling it nanonav.py 
+To use the NanoNav supplementary code, either download :download:`nanonav.py </../../nanonav.py>` to your project directory
 
-.. code-block:: python
+Or copy the code below into a file called nanonav.py
 
-    # nanonav.py
+.. raw:: html
 
-    # TODO: Add the code here
+   <div style="max-height: 50vh; overflow-y: scroll;">
+
+.. literalinclude:: /../../nanonav.py
+    :language: python
+    :linenos:
+
+.. raw:: html
+
+   </div>
+

@@ -3,10 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to NanoNav's documentation!
+Welcome to NanoNav's documentation.
 ===================================
 
-Check out the :doc:`usage` section for further information.
+Check out the :doc:`usage` section to get started.
 
 Contents
 --------
@@ -14,4 +14,6 @@ Contents
 .. toctree::
 
    usage
+   bluetooth 
+   movement
 
