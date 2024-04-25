@@ -19,7 +19,7 @@ Usage
 -----
 .. autoclass:: nanonav.BLE     
     :members: 
-    .. automethod:: __init__
+    :special-members: __init__,
     
 
 Connecting from Mobile
