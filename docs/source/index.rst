@@ -16,5 +16,6 @@ Contents
    usage
    bluetooth 
    movement
+   sensors
    faq
 

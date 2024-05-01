@@ -1,3 +1,5 @@
+.. _Bluetooth:
+
 Bluetooth
 =========
 Using Bluetooth Low Energy (BLE) to communicate with the NanoNav.

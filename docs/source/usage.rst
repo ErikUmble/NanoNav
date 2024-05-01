@@ -30,7 +30,7 @@ Or copy the code below into a file called nanonav.py
 Workflow
 --------
 Here is how you can program your Arduino. You will need a file called `main.py` that contains your MicroPython code - you can create other files 
-and import them as usual, but `main.py` is the one that will be run on the Arduino. For getting started quickly, we recommend downloading this installation check 
+and import them as usual, but `main.py` is the one that will be run on the Arduino. We'll explain a bit more about :ref:`MicroPython` below. For getting started quickly, we recommend downloading this installation check 
 :download:`main.py </../../tests/installation_check/main.py>` to verify that everything is working correctly so far. Alternatively, copy the following into a file called `main.py`:
 
 .. raw:: html
@@ -49,8 +49,7 @@ We recommend creating a folder that you will use for your MicroPython code - put
 Connect your Arduino to your computer using a USB cable. Click the "Connect" button in the bottom left of OpenMV IDE. The arrow below it should turn green when connected. Click that arrow to run
 your code on the Arduino. If all worked well, you should see :red:`TODO`.
 
-.. note::
-   We recommend testing your
+We recognize that OpenMV IDE is not a very nice editor to write code in, so feel free to open `main.py` in your favorite editor (such as VS Code) for editing and run them from OpenMV IDE.
 
 ..  _MicroPython:
 
@@ -63,3 +62,11 @@ interact with the Arduino, Bluetooth, and peripherals, and just about anything y
 MicroPython's library, but you cannot import `Queue` or other familiar packages. If ever in doubt about whether MicroPython supports a particular package, simply google "MicroPython [package name]", 
 and you will likely find the information you need.
 You can find the MicroPython documentation `here <https://docs.micropython.org/en/latest/>`_.
+
+..  _NextSteps:
+
+Next Steps
+----------
+
+Now that you have your Arduino set up and running MicroPython, you can start writing your own code. Feel free to take a look at and modify the `main.py` we provided earlier to see a few ways of interacting with 
+the Arduino using the `nanonav` library. When you are ready to learn more, take a look at our guides to using :ref:`Bluetooth`, controling :ref:`Movement`, and reading :ref:`Sensors`.
