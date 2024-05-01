@@ -16,7 +16,12 @@ import time
 
 class BLE:
     """
-    A helpful wraper around the BLE service functions needed for the Wumpus World project
+    A helpful wraper around the MicroPython BLE service functions.
+
+    :param ble: The bluetooth object to use for BLE communication (leave as default unless you know why it should be different).
+    :type ble: bluetooth.BLE
+    :param name: The name of the device to advertise (default: "NANO RP2040").
+    :type name: str
     """
     def __init__(self, ble=bluetooth.BLE(), name="NANO RP2040"):
         pass
@@ -26,20 +31,29 @@ class BLE:
         Send value to the bluetooth characteristic.
 
         :param value: The value to send.
-        :type value: bytes, int, str
-        :raise ValueError: If the value is not bytes, int, or str.
-
+        :type value: int, bytes, or str
+        :raise ValueError: If the value is not int, bytes, or str.
         """
         pass
 
-    def read(self, as_type="bytes"):
+    def read(self):
         """
         Return the current value of the bluetooth characteristic, or None if an error occurred.
 
-        :param as_type: The type to return the value as. Must be one of 'bytes', 'str', or 'int'.
         :type as_type: str
         :return: The value of the characteristic.
-        :rtype: bytes, str, int, None
-        :raise ValueError: If as_type is not 'bytes', 'str', or 'int'.
+        :rtype: int, None
+        """
+        pass
+
+    def on_connected(self):
+        """
+        You may specify this method to be called once the BLE connection is established.
+        """
+        pass
+
+    def on_disconnected(self):
+        """
+        You may specify this method to be called once the BLE connection is lost.
         """
         pass

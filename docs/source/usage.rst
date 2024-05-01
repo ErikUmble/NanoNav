@@ -57,7 +57,7 @@ MicroPython
 -----------
 
 In general, MicroPython is very similar to regular Python, but there are some difference we would like to point you to before you begin. MicroPython has its own library of 
-packages, which are different from the PyPi packages you may be used to (if you ever ```pip install``` anything). We provide helper functions for the ways we think you'll need to 
+packages, which are different from the PyPi packages you may be used to (if you ever ``pip install`` anything). We provide helper functions for the ways we think you'll need to 
 interact with the Arduino, Bluetooth, and peripherals, and just about anything you can do in Python 3.11 can also be done in MicroPython, but note that you will not have access to the full standard Python library. For instance, you can import `time` since this has been added to
 MicroPython's library, but you cannot import `Queue` or other familiar packages. If ever in doubt about whether MicroPython supports a particular package, simply google "MicroPython [package name]", 
 and you will likely find the information you need.
