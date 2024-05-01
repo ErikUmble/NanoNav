@@ -6,7 +6,7 @@ Installation
 You will need to download `OpenMV IDE <https://openmv.io/pages/download>`_ to transfer your MicroPython code onto the arduino. See :ref:`Workflow` for more information about this process.
 
 Your Arduino Nano RP2040 can run either C++ or MicroPython, but not both at the same time. So before moving on, it is important that the Arduino is configured for MicroPython mode.
-`Link this guide <https://docs.arduino.cc/tutorials/nano-rp2040-connect/rp2040-openmv-setup/>` from Arduino will walk you through the process of "bootloading" the Nano RP2040 so that 
+`This guide <https://docs.arduino.cc/tutorials/nano-rp2040-connect/rp2040-openmv-setup/>`_ from Arduino will walk you through the process of "bootloading" the Nano RP2040 so that 
 you can run MicroPython code on it. After you have done this once, you should not need to do it again.
 
 To use the NanoNav supplementary code, either download :download:`nanonav.py </../../nanonav.py>` to your project directory
