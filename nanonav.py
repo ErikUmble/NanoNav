@@ -118,3 +118,146 @@ class BLE:
             return int.from_bytes(value, "big")
         except Exception as e:
             return None
+
+
+class NanoBot:
+    """
+    Interact with Arduino and peripheral hardware for movement and sensing.
+
+    :param saturated_duty: The maximum duty cycle to use for the motors. This can be increased to compensate somewhat for lower battery voltage.
+    """
+    def __init__(self, saturated_duty=22000, *args, **kwargs):
+
+        # turn ir sensor pin on (inactive because it's active low)
+        self.ir_right_sensor = Pin(28, Pin.OUT)
+        self.ir_right_sensor.on()
+
+        time.sleep(0.5)
+
+        # ir sensors
+        self.ir_left_sensor = ADC(Pin(29, Pin.IN))
+        self.ir_right_sensor = ADC(Pin(28, Pin.IN))
+
+        # initialize frequency
+        machine.freq(100000000)
+
+        # initialize motors
+        m1pin1 = Pin(21)
+        m1pin2 = Pin(4)
+        m2pin1 = Pin(18)
+        m2pin2 = Pin(17)
+
+        self.m1pwm1 = PWM(m1pin1)
+        self.m1pwm2 = PWM(m1pin2)
+        self.m2pwm1 = PWM(m2pin1)
+        self.m2pwm2 = PWM(m2pin2)
+
+        # initialize motor constants
+        self.max_duty = 65535 # constant
+        self.saturated_duty = saturated_duty # choice for max speed
+        assert(0 <= self.saturated_duty <= self.max_duty)
+        self.turn90ticks = 120
+        self.turn_error = 5
+        self.block_delay = 1550
+
+        # PID controller constants
+        self.battery_scaling = 1.05
+        self.kp = 0.8 * self.battery_scaling
+        self.ki = 0.08 * self.battery_scaling
+        self.kd = 0.04 * self.battery_scaling
+
+        # initialize encoder variables
+        self.encpins = (15, 25, 7, 27)
+        self.enc1p1 = Pin(self.encpins[0], Pin.IN)
+        self.enc1p2 = Pin(self.encpins[1], Pin.IN)
+        self.enc2p1 = Pin(self.encpins[2], Pin.IN)
+        self.enc2p2 = Pin(self.encpins[3], Pin.IN)
+
+        self.enc1 = 0
+        self.enc2 = 0
+        self.enc1dir = 1
+        self.enc2dir = 1
+
+        # add interrupt callbacks to track encoder ticks
+        self.enc1p1.irq(lambda pin: self.enc_pin_high(self.encpins[0]), Pin.IRQ_RISING)
+        self.enc1p2.irq(lambda pin: self.enc_pin_high(self.encpins[1]), Pin.IRQ_RISING)
+        self.enc2p1.irq(lambda pin: self.enc_pin_high(self.encpins[2]), Pin.IRQ_RISING)
+        self.enc2p2.irq(lambda pin: self.enc_pin_high(self.encpins[3]), Pin.IRQ_RISING)
+
+        self.setup()
+
+    def enc_pin_high(self, pin):
+        if pin == self.encpins[0] or pin == self.encpins[1]:
+            if self.enc1p1.value() == 1 and self.enc1p2.value() == 1:
+                self.enc1 += 1 * self.enc1dir
+            elif self.enc1p1.value() == 1:
+                self.enc1dir = 1
+            else:
+                self.enc1dir = -1
+        if pin == self.encpins[2] or pin == self.encpins[3]:
+            if self.enc2p1.value() == 1 and self.enc2p2.value() == 1:
+                self.enc2 += 1 * self.enc2dir
+            elif self.enc2p1.value() == 1:
+                self.enc2dir = -1
+            else:
+                self.enc2dir = 1
+
+    def calc_duty(self, duty_100):
+        return int(duty_100 * self.max_duty / 100)
+
+    def m1_forward(self, duty_cycle):
+        self.m1pwm1.duty_u16(min(self.calc_duty(duty_cycle), self.saturated_duty))
+        self.m1pwm2.duty_u16(0)
+
+    def m2_backward(self, duty_cycle):
+        self.m1pwm1.duty_u16(0)
+        self.m1pwm2.duty_u16(min(self.calc_duty(duty_cycle), self.saturated_duty))
+
+    def m1_signed(self, duty_cycle):
+        if duty_cycle >= 0:
+            self.m1_forward(duty_cycle)
+        else:
+            self.m2_backward(-duty_cycle)
+
+    def m2_forward(self, duty_cycle):
+        self.m2pwm1.duty_u16(min(self.calc_duty(duty_cycle), self.saturated_duty))
+        self.m2pwm2.duty_u16(0)
+
+    def m2_backward(self, duty_cycle):
+        self.m2pwm1.duty_u16(0)
+        self.m2pwm2.duty_u16(min(self.calc_duty(duty_cycle), self.saturated_duty))
+
+    def m2_signed(self, duty_cycle):
+        if duty_cycle >= 0:
+            self.m2_forward(duty_cycle)
+        else:
+            self.m2_backward(-duty_cycle)
+
+    def stop(self):
+        """
+        Turn off all motors.
+        """
+        # set all duty cycles to 0
+        self.m1pwm1.duty_u16(0)
+        self.m1pwm2.duty_u16(0)
+        self.m2pwm1.duty_u16(0)
+        self.m2pwm2.duty_u16(0)
+
+    def setup(self):
+        # initialize frequencies
+        self.m1pwm1.freq(1000)
+        self.m1pwm2.freq(1000)
+        self.m2pwm1.freq(1000)
+        self.m2pwm2.freq(1000)
+
+    def ir_left(self):
+        """
+        Return true if the left IR sensor detects white.
+        """
+        return self.ir_left_sensor.read_u16() < 65535 // 2
+
+    def ir_right(self):
+        """
+        Return true if the right IR sensor detects white.
+        """
+        return self.ir_right_sensor.read_u16() < 65535 // 2

@@ -12,3 +12,10 @@ Quick Example
     from nanonav import ...
 
     # TODO
+
+Usage
+-----
+
+.. autoclass:: nanonav.NanoBot
+    :members:
+
