@@ -16,4 +16,5 @@ Contents
    usage
    bluetooth 
    movement
+   faq
 

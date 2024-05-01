@@ -58,4 +58,4 @@ can look at (read) whatever is on it whenever you like, and can also change (wri
 above picture, you can click the :blue:`Read Again` button as often as you would like, but the value will only
 change when you (or NanoNav) writes to it. And you can send a number as often as you want in LightBlue, but NanoNav will not know unless you program it to 
 read the value periodically. (Actually, you can setup BLE interrupts for NanoNav to run code when something changes in the BLE connection. You will not need to do this,
-but if interested, see `Link here <https://docs.micropython.org/en/latest/library/bluetooth.html>`_ for advanced uses).
+but if interested, see `here <https://docs.micropython.org/en/latest/library/bluetooth.html>`_ for advanced uses).
