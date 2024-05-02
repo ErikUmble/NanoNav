@@ -261,3 +261,15 @@ class NanoBot:
         Return true if the right IR sensor detects white.
         """
         return self.ir_right_sensor.read_u16() < 65535 // 2
+
+    def get_enc1(self):
+        return self.enc1
+
+    def get_enc2(self):
+        return self.enc2
+
+    def set_enc1(self, value):
+        self.enc1 = value
+
+    def set_enc2(self, value):
+        self.enc2 = value

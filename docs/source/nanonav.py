@@ -200,3 +200,33 @@ class NanoBot:
         rtype: boolean
         """
         pass
+
+    def get_enc1(self):
+        """
+        Return the current encoder 1 count.
+
+        rtype: int
+        """
+        
+    def get_enc2(self):
+        """
+        Return the current encoder 2 count.
+
+        rtype: int
+        """
+
+    def set_enc1(self, value):
+        """
+        Set the current encoder 1 count. This is useful if you want to zero its value.
+        
+        :param value: The new value to set the encoder 1 count to.
+        :type value: int
+        """
+        
+    def set_enc2(self, value):
+        """
+        Set the current encoder 2 count. This is useful if you want to zero its value.
+        
+        :param value: The new value to set the encoder 2 count to.
+        :type value: int
+        """
