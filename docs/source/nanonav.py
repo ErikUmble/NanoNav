@@ -205,6 +205,7 @@ class NanoBot:
         """
         Return the current encoder 1 count.
 
+        :return: The value of the encoder 1.
         rtype: int
         """
         
@@ -212,6 +213,7 @@ class NanoBot:
         """
         Return the current encoder 2 count.
 
+        :return: The value of the encoder 2.
         rtype: int
         """
 
