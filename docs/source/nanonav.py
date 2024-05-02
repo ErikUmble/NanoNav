@@ -206,7 +206,7 @@ class NanoBot:
         Return the current encoder 1 count.
 
         :return: The value of the encoder 1.
-        rtype: int
+        :rtype: int
         """
         
     def get_enc2(self):
@@ -214,7 +214,7 @@ class NanoBot:
         Return the current encoder 2 count.
 
         :return: The value of the encoder 2.
-        rtype: int
+        :rtype: int
         """
 
     def set_enc1(self, value):
