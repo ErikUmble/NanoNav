@@ -147,6 +147,7 @@ class NanoBot:
         """
         Set Motor 1 to turn forward at speed.
         :param speed: The speed to turn Motor 1 forward at. This is a percentage of max speed from 0-100.
+        :type speed: int or float
         """
         pass
 
@@ -154,6 +155,7 @@ class NanoBot:
         """
         Set Motor 1 to turn backward at speed.
         :param speed: The speed to turn Motor 1 backward at. This is a percentage of max speed from 0-100.
+        :type speed: int or float
         """
         pass
 
@@ -161,6 +163,7 @@ class NanoBot:
         """
         Set Motor 2 to turn forward at speed.
         :param speed: The speed to turn Motor 2 forward at. This is a percentage of max speed from 0-100.
+        :type speed: int or float
         """
         pass
         
@@ -168,6 +171,7 @@ class NanoBot:
         """
         Set Motor 2 to turn backward at speed.
         :param speed: The speed to turn Motor 2 backward at. This is a percentage of max speed from 0-100.
+        :type speed: int or float
         """
         pass
 
