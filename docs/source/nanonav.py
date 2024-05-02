@@ -188,6 +188,7 @@ class NanoBot:
     def ir_left(self):
         """
         Return true if the left IR sensor detects white.
+
         rtype: boolean
         """
         pass
@@ -195,6 +196,7 @@ class NanoBot:
     def ir_right(self):
         """
         Return true if the right IR sensor detects white.
+
         rtype: boolean
         """
         pass
