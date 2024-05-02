@@ -62,9 +62,9 @@ class NanoBot:
     """
     Interact with Arduino and peripheral hardware for movement and sensing.
 
-    :param saturated_duty: The maximum duty cycle to use for the motors. This can be increased to compensate somewhat for lower battery voltage.
+    :param saturated_speed: The maximum duty cycle to use for the motors. This is a percentage of max speed the motor can supply from 0-100. If you find that your NanoBot is driving too fast or not driving fast enough, try changing this value.
     """
-    def __init__(self, saturated_duty=22000, *args, **kwargs):
+    def __init__(self, saturated_speed=33, *args, **kwargs):
 
         # turn ir sensor pin on (inactive because it's active low)
         self.ir_right_sensor = Pin(28, Pin.OUT)
@@ -92,7 +92,7 @@ class NanoBot:
 
         # initialize motor constants
         self.max_duty = 65535 # constant
-        self.saturated_duty = saturated_duty # choice for max speed
+        self.saturated_duty = saturated_duty * self.max_duty / 100 # choice for max speed
         assert(0 <= self.saturated_duty <= self.max_duty)
         self.turn90ticks = 120
         self.turn_error = 5
