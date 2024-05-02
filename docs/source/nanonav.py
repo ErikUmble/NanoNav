@@ -146,6 +146,7 @@ class NanoBot:
     def m1_forward(self, speed):
         """
         Set Motor 1 to turn forward at speed.
+
         :param speed: The speed to turn Motor 1 forward at. This is a percentage of max speed from 0-100.
         :type speed: int or float
         """
@@ -154,6 +155,7 @@ class NanoBot:
     def m2_backward(self, speed):
         """
         Set Motor 1 to turn backward at speed.
+
         :param speed: The speed to turn Motor 1 backward at. This is a percentage of max speed from 0-100.
         :type speed: int or float
         """
@@ -162,6 +164,7 @@ class NanoBot:
     def m2_forward(self, speed):
         """
         Set Motor 2 to turn forward at speed.
+
         :param speed: The speed to turn Motor 2 forward at. This is a percentage of max speed from 0-100.
         :type speed: int or float
         """
@@ -170,6 +173,7 @@ class NanoBot:
     def m2_backward(self, speed):
         """
         Set Motor 2 to turn backward at speed.
+
         :param speed: The speed to turn Motor 2 backward at. This is a percentage of max speed from 0-100.
         :type speed: int or float
         """
@@ -184,11 +188,13 @@ class NanoBot:
     def ir_left(self):
         """
         Return true if the left IR sensor detects white.
+        rtype: boolean
         """
         pass
 
     def ir_right(self):
         """
         Return true if the right IR sensor detects white.
+        rtype: boolean
         """
         pass
