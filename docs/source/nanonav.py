@@ -143,33 +143,33 @@ class NanoBot:
     def calc_duty(self, duty_100):
         return int(duty_100 * self.max_duty / 100)
 
-    def m1_forward(self, duty_cycle):
-        self.m1pwm1.duty_u16(min(self.calc_duty(duty_cycle), self.saturated_duty))
-        self.m1pwm2.duty_u16(0)
+    def m1_forward(self, speed):
+        """
+        Set Motor 1 to turn forward at speed.
+        :param speed: The speed to turn Motor 1 forward at. This is a percentage of max speed from 0-100.
+        """
+        pass
 
-    def m2_backward(self, duty_cycle):
-        self.m1pwm1.duty_u16(0)
-        self.m1pwm2.duty_u16(min(self.calc_duty(duty_cycle), self.saturated_duty))
+    def m2_backward(self, speed):
+        """
+        Set Motor 1 to turn backward at speed.
+        :param speed: The speed to turn Motor 1 backward at. This is a percentage of max speed from 0-100.
+        """
+        pass
 
-    def m1_signed(self, duty_cycle):
-        if duty_cycle >= 0:
-            self.m1_forward(duty_cycle)
-        else:
-            self.m2_backward(-duty_cycle)
-
-    def m2_forward(self, duty_cycle):
-        self.m2pwm1.duty_u16(min(self.calc_duty(duty_cycle), self.saturated_duty))
-        self.m2pwm2.duty_u16(0)
-
-    def m2_backward(self, duty_cycle):
-        self.m2pwm1.duty_u16(0)
-        self.m2pwm2.duty_u16(min(self.calc_duty(duty_cycle), self.saturated_duty))
-
-    def m2_signed(self, duty_cycle):
-        if duty_cycle >= 0:
-            self.m2_forward(duty_cycle)
-        else:
-            self.m2_backward(-duty_cycle)
+    def m2_forward(self, speed):
+        """
+        Set Motor 2 to turn forward at speed.
+        :param speed: The speed to turn Motor 2 forward at. This is a percentage of max speed from 0-100.
+        """
+        pass
+        
+    def m2_backward(self, speed):
+        """
+        Set Motor 2 to turn backward at speed.
+        :param speed: The speed to turn Motor 2 backward at. This is a percentage of max speed from 0-100.
+        """
+        pass
 
     def stop(self):
         """
