@@ -9,10 +9,28 @@ Quick Example
 
 .. code-block:: python
 
-    from nanonav import ...
+    from nanonav import NanoBot
+    import time
 
-    # TODO
+    # Create a NanoBot object
+    robot = NanoBot()
 
+    # Move forward for 2 seconds
+    robot.m1_forward(30)
+    robot.m2_forward(30)
+    time.sleep(2)
+
+    # Stop
+    robot.stop()
+
+    # Move backward for 2 seconds
+    robot.m1_backward(30)
+    robot.m2_backward(30)
+    time.sleep(2)
+
+    # Stop
+    robot.stop()
+    
 Usage
 -----
 
