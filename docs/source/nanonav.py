@@ -189,7 +189,7 @@ class NanoBot:
         """
         Return true if the left IR sensor detects white.
 
-        rtype: boolean
+        :rtype: boolean
         """
         pass
 
@@ -197,7 +197,7 @@ class NanoBot:
         """
         Return true if the right IR sensor detects white.
 
-        rtype: boolean
+        :rtype: boolean
         """
         pass
 
