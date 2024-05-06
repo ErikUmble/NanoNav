@@ -37,5 +37,5 @@ Usage
 
 .. autoclass:: nanonav.NanoBot
     :members:
-       :exclude-members: ir_left
+    :exclude-members: ir_left
 
