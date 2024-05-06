@@ -29,6 +29,7 @@ Or copy the code below into a file called nanonav.py
 
 Workflow Using OpenMV
 ---------------------
+
 Here is how you can program your Arduino. You will need a file called `main.py` that contains your MicroPython code - you can create other files 
 and import them as usual, but `main.py` is the one that will be run on the Arduino. We'll explain a bit more about :ref:`MicroPython` below. For getting started quickly, we recommend downloading this installation check 
 :download:`main.py </../../tests/installation_check/main.py>` to verify that everything is working correctly so far. Alternatively, copy the following into a file called `main.py`:
@@ -46,6 +47,10 @@ and import them as usual, but `main.py` is the one that will be run on the Ardui
    </div>
 
 We recommend creating a folder that you will use for your MicroPython code - put both `nanonav.py` and `main.py` in that folder. Open the OpenMV IDE application. Use the File -> Open Files menu to select the `main.py` file that you downloaded.
+
+Connecting to the Arduino over USB
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Connect your Arduino to your computer using a USB cable. In the bottom left of the OpenMV IDE, you should see this:
 
 .. image:: images/openmv_unconnected.png
@@ -62,10 +67,13 @@ The arrow below it should turn green when connected.
 
 After you can see the green arrow, you should be able to see the Arduino as an external drive in FileExplorer (Windows), Finder (Mac), or the equivalent for your Operating System. It will likely be named "NO NAME" and should contain a `main.py` and `README.txt` file. Copy the `nanonav.py` file over to the Arduino (external drive) by either Ctrl-C Ctrl-V or drag-and-drop. This will enable you to import nanonav when you run your code on the board.
 
-Click the arrow to run the code in conjunction with the laptop, AKA laptop mode. Running in laptop mode enables you to make print statements, which will be printed to the Serial Terminal in the OpenMV IDE. You can expand this terminal by pressing its corresponding button in the bottom left of the IDE. Note that when running in laptop mode, you must have the Arduino connected to the laptop. Once you disconnect the Arduino, your code will no longer be running.
-To run code without the laptop connected, you need to run in solo mode. Do this by going to Tools > Save open script to OpenMV Cam (as main.py). This will write the file you have open to the Arduino under the name "main.py". An alternative way to do this would be to copy the file over in FileExplorer like we did for nanonav.py. If you copy the file using FileExplorer, make sure it's named main.py, as the Arduino looks for and executes only the main.py file.
+Running your code on the Arduino
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We recognize that OpenMV IDE is not a very nice editor to write code in, so feel free to open `main.py` in your favorite editor (such as VS Code) for editing and run them from OpenMV IDE.
+**Laptop mode**: Click the arrow to run the code in conjunction with the laptop. Running in laptop mode is optimal for debugging. You can run and stop your code without touching the Arduino or USB cable. While in laptop mode, you can use print statements to print to the Serial Terminal in the OpenMV IDE. You can expand this terminal by pressing its corresponding button in the bottom left of the IDE. Note that when running in laptop mode, you must have the Arduino connected to the laptop. Once you disconnect the Arduino, your code will no longer be running.
+**Solo mode**: To run code without the laptop connected, you need to run in solo mode. Connect to the Arduino but don't hit the green play. Instead, go to Tools > Save open script to OpenMV Cam (as main.py). This will write the file you have open to the Arduino under the name "main.py". An alternative way to do this would be to copy the file over in FileExplorer/Finder like we did for nanonav.py. If you copy the file using FileExplorer/Finder, make sure it's named main.py, as the Arduino looks for and executes only the main.py file.
+
+We recognize that OpenMV IDE is not a very nice editor to write code in, so feel free to open `main.py` in your favorite editor (such as VS Code) for editing and run it from OpenMV IDE.
 
 ..  _MicroPython:
 
