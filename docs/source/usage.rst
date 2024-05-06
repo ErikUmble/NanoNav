@@ -25,6 +25,7 @@ Or copy the code below into a file called nanonav.py
 
    </div>
 
+   
 ..  _Workflow:
 
 Workflow Using OpenMV
@@ -71,7 +72,8 @@ Running your code on the Arduino
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Laptop mode**: Click the arrow to run the code in conjunction with the laptop. Running in laptop mode is optimal for debugging. You can run and stop your code without touching the Arduino or USB cable. While in laptop mode, you can use print statements to print to the Serial Terminal in the OpenMV IDE. You can expand this terminal by pressing its corresponding button in the bottom left of the IDE. Note that when running in laptop mode, you must have the Arduino connected to the laptop. Once you disconnect the Arduino, your code will no longer be running.
-**Solo mode**: To run code without the laptop connected, you need to run in solo mode. Connect to the Arduino but don't hit the green play. Instead, go to Tools > Save open script to OpenMV Cam (as main.py). This will write the file you have open to the Arduino under the name "main.py". An alternative way to do this would be to copy the file over in FileExplorer/Finder like we did for nanonav.py. If you copy the file using FileExplorer/Finder, make sure it's named main.py, as the Arduino looks for and executes only the main.py file.
+
+**Solo mode**: To run code without the laptop connected, you need to run in solo mode. Connect to the Arduino but don't hit the green play. Instead, go to Tools > Save open script to OpenMV Cam (as main.py). This will write the file you have open to the Arduino under the name "main.py". An alternative way to do this would be to copy the file over in FileExplorer/Finder like we did for nanonav.py. If you copy the file using FileExplorer/Finder, make sure it's named main.py, as the Arduino looks for and executes only the main.py file. In solo mode, you won't have access to any print statements or Python exceptions, so only use solo mode after you've tested your code in laptop mode.
 
 We recognize that OpenMV IDE is not a very nice editor to write code in, so feel free to open `main.py` in your favorite editor (such as VS Code) for editing and run it from OpenMV IDE.
 
@@ -93,4 +95,4 @@ Next Steps
 ----------
 
 Now that you have your Arduino set up and running MicroPython, you can start writing your own code. Feel free to take a look at and modify the `main.py` we provided earlier to see a few ways of interacting with 
-the Arduino using the `nanonav` library. When you are ready to learn more, take a look at our guides to using :ref:`Bluetooth`, controling :ref:`Movement`, and reading :ref:`Sensors`.
+the Arduino using the `nanonav` library. When you are ready to learn more, take a look at our guides to using :ref:`Bluetooth`, controlling :ref:`Movement`, and reading :ref:`Sensors`.
