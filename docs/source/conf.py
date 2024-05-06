@@ -46,3 +46,4 @@ rst_prolog = """
 
 def setup(app):
     app.add_css_file('css/s4defs-roles.css')
+    app.connect('autodoc-skip-member', skip_member)
