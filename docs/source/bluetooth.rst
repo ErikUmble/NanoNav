@@ -10,6 +10,7 @@ Quick Example
 .. code-block:: python
 
     from nanonav import BLE
+    import time
 
     # Create a Bluetooth object
     ble = BLE(name="NanoNav")  
@@ -19,6 +20,7 @@ Quick Example
     # wait until something changes, indicating a response
     while response == 43:
         response = ble.read()
+	time.sleep(0.5)
 
     print("Received: ", response)
 

@@ -1,6 +1,41 @@
 Quick Start
 ===========
 
+Assembly
+--------
+
+.. image:: images/parts.jpeg
+   :height: 200
+   :alt: Kit parts
+
+The kit has 5 main parts: the IR sensor bar, Arduino Nano RP2040, wheels, battery (not shown) and MinSeg board. To assemble, insert the battery into the MinSeg kit. This could be a tight fit, so be careful! Line up the terminals of the battery first (they should connect together well), then rock the battery into place.
+
+Next, insert the Arduino on the top of the MinSeg kit. Each pin on the Arduino has a corresponding connector on the MinSeg kit, so make sure they align. The Arduino should be oriented as shown, with the microUSB connector facing forwards on the kit.
+
+.. image:: images/top_view.jpeg
+   :height: 200
+   :alt: The orientation of the Arduino on the MinSeg kit.
+
+Next, slide the IR sensor bar into the front of the MinSeg board, with the IR sensors facing downwards. The orientation is important so that you do not reverse polarity and burn out the LEDs!
+
+.. image:: images/IR_assembled.jpeg
+   :height: 200
+   :alt: The IR sensors inserted properly.
+
+After that, slide the wheels onto the motor shafts. Be gentle! The wheels and motor shafts have a flat side (D shafts), so make sure the flats align before trying to slide them on! If you have trouble, try facing the outwards bump of the wheels into the kit as shown below:
+
+.. image:: images/wheels.jpeg
+   :height: 200
+   :alt: The motors and wheels.
+
+After that, the kit is assembled. Let's adjust the settings. On the left side of the MinSeg board, you'll find three switches, labeled "Pwr Switch", "Driver Volts", and "Driver Enable". When you flip the Power Switch on, you should see lights on the Arduino, MinSeg board, and IR sensors light up. If any of these lights do not light up, something is wrong with your assembly. Make sure you have done the previous steps correctly, including inserting a battery.
+
+Flipping the Driver Enable switch will allow the Arduino to drive the motors. Switch it to ON.
+
+Lastly, flip "Driver Volts" to Battery Power. This will draw power from the battery rather than your laptop (which will be disconnected when you run your final code).
+
+With this assembly and settings, you'll be ready to go!
+
 Installation
 ------------
 You will need to download `OpenMV IDE <https://openmv.io/pages/download>`_ to transfer your MicroPython code onto the arduino. See :ref:`Workflow` for more information about this process.
