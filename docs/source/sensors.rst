@@ -3,4 +3,10 @@
 Sensors
 =======
 
-To best interact with its environment, your NanoNav kit comes with infrared sensors that can be used for detecting how reflective the surface under it is. 
+To best interact with its environment, your NanoNav kit comes with infrared sensors that can be used for detecting how reflective the surface under it is.
+
+Usage
+-----
+
+.. autoclass:: nanonav.NanoBot
+    :members: ir_left, ir_right

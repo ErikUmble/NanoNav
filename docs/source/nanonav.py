@@ -62,9 +62,9 @@ class NanoBot:
     """
     Interact with Arduino and peripheral hardware for movement and sensing.
 
-    :param saturated_duty: The maximum duty cycle to use for the motors. This can be increased to compensate somewhat for lower battery voltage.
+    :param saturated_speed: The maximum duty cycle to use for the motors. This is a percentage of max speed the motor can supply from 0-100. If you find that your NanoBot is driving too fast or not driving fast enough, try changing this value.
     """
-    def __init__(self, saturated_duty=22000, *args, **kwargs):
+    def __init__(self, saturated_speed=33, *args, **kwargs):
 
         # turn ir sensor pin on (inactive because it's active low)
         self.ir_right_sensor = Pin(28, Pin.OUT)
@@ -92,7 +92,7 @@ class NanoBot:
 
         # initialize motor constants
         self.max_duty = 65535 # constant
-        self.saturated_duty = saturated_duty # choice for max speed
+        self.saturated_duty = saturated_duty * self.max_duty / 100 # choice for max speed
         assert(0 <= self.saturated_duty <= self.max_duty)
         self.turn90ticks = 120
         self.turn_error = 5
@@ -143,33 +143,41 @@ class NanoBot:
     def calc_duty(self, duty_100):
         return int(duty_100 * self.max_duty / 100)
 
-    def m1_forward(self, duty_cycle):
-        self.m1pwm1.duty_u16(min(self.calc_duty(duty_cycle), self.saturated_duty))
-        self.m1pwm2.duty_u16(0)
+    def m1_forward(self, speed):
+        """
+        Set Motor 1 to turn forward at speed.
 
-    def m2_backward(self, duty_cycle):
-        self.m1pwm1.duty_u16(0)
-        self.m1pwm2.duty_u16(min(self.calc_duty(duty_cycle), self.saturated_duty))
+        :param speed: The speed to turn Motor 1 forward at. This is a percentage of max speed from 0-100.
+        :type speed: int or float
+        """
+        pass
 
-    def m1_signed(self, duty_cycle):
-        if duty_cycle >= 0:
-            self.m1_forward(duty_cycle)
-        else:
-            self.m2_backward(-duty_cycle)
+    def m2_backward(self, speed):
+        """
+        Set Motor 1 to turn backward at speed.
 
-    def m2_forward(self, duty_cycle):
-        self.m2pwm1.duty_u16(min(self.calc_duty(duty_cycle), self.saturated_duty))
-        self.m2pwm2.duty_u16(0)
+        :param speed: The speed to turn Motor 1 backward at. This is a percentage of max speed from 0-100.
+        :type speed: int or float
+        """
+        pass
 
-    def m2_backward(self, duty_cycle):
-        self.m2pwm1.duty_u16(0)
-        self.m2pwm2.duty_u16(min(self.calc_duty(duty_cycle), self.saturated_duty))
+    def m2_forward(self, speed):
+        """
+        Set Motor 2 to turn forward at speed.
 
-    def m2_signed(self, duty_cycle):
-        if duty_cycle >= 0:
-            self.m2_forward(duty_cycle)
-        else:
-            self.m2_backward(-duty_cycle)
+        :param speed: The speed to turn Motor 2 forward at. This is a percentage of max speed from 0-100.
+        :type speed: int or float
+        """
+        pass
+        
+    def m2_backward(self, speed):
+        """
+        Set Motor 2 to turn backward at speed.
+
+        :param speed: The speed to turn Motor 2 backward at. This is a percentage of max speed from 0-100.
+        :type speed: int or float
+        """
+        pass
 
     def stop(self):
         """
@@ -180,11 +188,47 @@ class NanoBot:
     def ir_left(self):
         """
         Return true if the left IR sensor detects white.
+
+        :rtype: boolean
         """
         pass
 
     def ir_right(self):
         """
         Return true if the right IR sensor detects white.
+
+        :rtype: boolean
         """
         pass
+
+    def get_enc1(self):
+        """
+        Return the current encoder 1 count.
+
+        :return: The value of the encoder 1.
+        :rtype: int
+        """
+        
+    def get_enc2(self):
+        """
+        Return the current encoder 2 count.
+
+        :return: The value of the encoder 2.
+        :rtype: int
+        """
+
+    def set_enc1(self, value):
+        """
+        Set the current encoder 1 count. This is useful if you want to zero its value.
+        
+        :param value: The new value to set the encoder 1 count to.
+        :type value: int
+        """
+        
+    def set_enc2(self, value):
+        """
+        Set the current encoder 2 count. This is useful if you want to zero its value.
+        
+        :param value: The new value to set the encoder 2 count to.
+        :type value: int
+        """
