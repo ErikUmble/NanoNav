@@ -1,11 +1,3 @@
-#
-#
-#
-# TODO: Strip comments and docstrings once docs/source/nanonav.py skeleton is complete
-# (it's ok to leave them in for now while we are finalizing the documentation)
-#
-
-
 from ble_advertising import advertising_payload
 import bluetooth
 from machine import Pin, PWM, ADC, freq
@@ -24,9 +16,6 @@ _IRQ_CENTRAL_DISCONNECT = const(2)
 _IRQ_GATTS_WRITE = const(3)
 
 class BLE:
-    """
-    A helpful wraper around the BLE service functions needed for the Wumpus World project
-    """
     def __init__(self, ble=bluetooth.BLE(), name="NANO RP2040"):
         # Setup bluetooth low energy communication service
         _SERVICE_UUID = bluetooth.UUID(0x1523) # unique service id for the communication
@@ -75,25 +64,12 @@ class BLE:
                 self.value = self._ble.gatts_read(value_handle)
 
     def on_connected(self):
-        """
-        You may specify this method to be called once the BLE connection is established.
-        """
         pass
 
     def on_disconnected(self):
-        """
-        You may specify this method to be called once the BLE connection is lost.
-        """
         pass
 
     def send(self, value):
-        """
-        Send value to the bluetooth characteristic.
-
-        :param value: The value to send.
-        :type value: int, bytes, or str
-        :raise ValueError: If the value is not int, bytes, or str.
-        """
         if not isinstance(value, bytes):
             if isinstance(value, int):
                 value = value.to_bytes(1, "big")
@@ -105,13 +81,6 @@ class BLE:
         self._ble.gatts_write(self._handle, value)
 
     def read(self):
-        """
-        Return the current value of the bluetooth characteristic, or None if an error occurred.
-
-        :type as_type: str
-        :return: The value of the characteristic.
-        :rtype: int, None
-        """
         #use the last value written to characteristic
         value = self.value 
         try:
@@ -119,15 +88,8 @@ class BLE:
         except Exception as e:
             return None
 
-
 class NanoBot:
-    """
-    Interact with Arduino and peripheral hardware for movement and sensing.
-
-    :param saturated_duty: The maximum duty cycle to use for the motors. This can be increased to compensate somewhat for lower battery voltage.
-    """
     def __init__(self, saturated_duty=22000, *args, **kwargs):
-
         # turn ir sensor pin on (inactive because it's active low)
         self.ir_right_sensor = Pin(28, Pin.OUT)
         self.ir_right_sensor.on()
@@ -234,9 +196,6 @@ class NanoBot:
             self.m2_backward(-duty_cycle)
 
     def stop(self):
-        """
-        Turn off all motors.
-        """
         # set all duty cycles to 0
         self.m1pwm1.duty_u16(0)
         self.m1pwm2.duty_u16(0)
@@ -251,15 +210,9 @@ class NanoBot:
         self.m2pwm2.freq(1000)
 
     def ir_left(self):
-        """
-        Return true if the left IR sensor detects white.
-        """
         return self.ir_left_sensor.read_u16() < 65535 // 2
 
     def ir_right(self):
-        """
-        Return true if the right IR sensor detects white.
-        """
         return self.ir_right_sensor.read_u16() < 65535 // 2
 
     def get_enc1(self):
