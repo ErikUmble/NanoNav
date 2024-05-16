@@ -42,7 +42,7 @@ If the NanoNav is waiting for a BLE connection, you will see it as one of the co
 
 .. note::
     On some versions of iOS, the BLE devices are automatically renamed, and NanoNav's connection may show up as "Arduino" or something else. If you find yourself in this 
-    situation, it can be helpful to search for the service id instead. TODO: add explanation for how this can be done.
+    situation, it can be helpful to search for the Arduino's MAC address instead, which means identifying the device once in LightBlue and keeping track of its MAC address for future connections.
 
 .. image:: images/lightblue_devices_view.png
   :width: 400
